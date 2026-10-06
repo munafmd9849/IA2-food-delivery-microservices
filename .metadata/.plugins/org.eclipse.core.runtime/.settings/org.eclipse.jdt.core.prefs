@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=21
+org.eclipse.jdt.core.compiler.compliance=21
+org.eclipse.jdt.core.compiler.release=enabled
+org.eclipse.jdt.core.compiler.source=21
+org.eclipse.jdt.core.userLibrary.jdbchikarijars=<?xml version\="1.0" encoding\="UTF-8"?>\n<userlibrary systemlibrary\="false" version\="2">\n\t<archive path\="/home/munafmd9849/Projects/JARProjectManual/lib/HikariCP-7.0.2.jar"/>\n\t<archive path\="/home/munafmd9849/Projects/JARProjectManual/lib/mysql-connector-j-9.6.0.jar"/>\n\t<archive path\="/home/munafmd9849/Projects/JARProjectManual/lib/slf4j-api-2.0.18.jar"/>\n</userlibrary>\n
