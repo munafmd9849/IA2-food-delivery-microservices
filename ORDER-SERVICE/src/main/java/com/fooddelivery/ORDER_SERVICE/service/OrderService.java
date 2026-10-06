@@ -148,6 +148,10 @@ public class OrderService {
                         ));
     }
 
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
     public List<Order> getCustomerOrders(
             Long customerId) {
 
@@ -169,4 +173,5 @@ public class OrderService {
 
         return orderRepository.save(order);
     }
+
 }

@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import org.springframework.http.HttpMethod;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -33,6 +32,7 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
 
+                        // Swagger
                         .requestMatchers(
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
@@ -40,20 +40,35 @@ public class SecurityConfig {
                                 "/v3/api-docs"
                         ).permitAll()
 
+                        // Create order
                         .requestMatchers(
                                 HttpMethod.POST,
                                 "/api/orders"
-                        ).authenticated()
+                        ).hasAnyAuthority("CUSTOMER", "ADMIN")
 
+                        // ADMIN - view ALL orders
                         .requestMatchers(
                                 HttpMethod.GET,
-                                "/api/orders/**"
+                                "/api/orders"
+                        ).hasAuthority("ADMIN")
+
+                        // Get individual order
+                        .requestMatchers(
+                                HttpMethod.GET,
+                                "/api/orders/*"
                         ).authenticated()
 
+                        // Customer's orders
+                        .requestMatchers(
+                                HttpMethod.GET,
+                                "/api/orders/customer/**"
+                        ).hasAnyAuthority("CUSTOMER", "ADMIN")
+
+                        // Cancel order
                         .requestMatchers(
                                 HttpMethod.PUT,
                                 "/api/orders/**"
-                        ).authenticated()
+                        ).hasAnyAuthority("CUSTOMER", "ADMIN")
 
                         .anyRequest().authenticated()
                 )

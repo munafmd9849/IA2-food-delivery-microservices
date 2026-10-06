@@ -26,6 +26,13 @@ public class OrderController {
                 orderService.createOrder(request)
         );
     }
+    @GetMapping
+    public ResponseEntity<List<Order>> getAllOrders() {
+
+        return ResponseEntity.ok(
+                orderService.getAllOrders()
+        );
+    }
 
     @GetMapping("/{orderId}")
     public ResponseEntity<Order> getOrder(
