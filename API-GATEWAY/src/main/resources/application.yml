@@ -1,39 +1,6 @@
-server:
-  port: 8080
-
 spring:
   application:
     name: API-GATEWAY
 
   config:
-    import: optional:configserver:http://localhost:8888
-
-  cloud:
-    gateway:
-      routes:
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/api/users/**
-
-        - id: food-service
-          uri: lb://FOOD-SERVICE
-          predicates:
-            - Path=/api/foods/**
-
-        - id: order-service
-          uri: lb://ORDER-SERVICE
-          predicates:
-            - Path=/api/orders/**
-
-        - id: payment-service
-          uri: lb://PAYMENT-SERVICE
-          predicates:
-            - Path=/api/payments/**
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-    register-with-eureka: true
-    fetch-registry: true
+    import: configserver:http://localhost:8888

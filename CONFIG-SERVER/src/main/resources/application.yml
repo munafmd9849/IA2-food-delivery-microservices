@@ -9,5 +9,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/munafmd9849/config-repo-microservice
+          uri: https://github.com/munafmd9849/IA2-config-repo-microservice
           default-label: main
